@@ -1,8 +1,9 @@
 ---
-title: Labyrint
+title: Лабіринт
 level: 1
 author: 'Geir Arne Hjelle'
-language: nb
+translator: 'Hanna Yeromina'
+language: ua
 ---
 
 
