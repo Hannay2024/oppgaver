@@ -56,226 +56,168 @@ language: ua
   перемістити на (5) кроків
   ```
 
-## Test prosjektet {.flag}
+## Перевірте проєкт {.flag}
 
-__Klikk på det grønne flagget.__
+__Натисніть на зелений прапорець.__
 
 - [ ] Beveger utforskeren din seg rundt slik du hadde forventet?
 
 - [ ] Kan du forandre hvor raskt utforskeren flytter seg?
 
-Tallet `5` i `gå (5) steg`{.b}-klossene bestemmer hvor raskt
-utforskeren flytter seg rundt. Vi vil gjerne eksperimentere litt for å
-se hvilken fart som passer best i spillet vårt, men for å endre farten
-må vi bytte tallet i fire forskjellige skript. Det blir for mye jobb!
+Tallet `5` i 
+Чи пересувається ваша дослідниця так, як ви очікували?
+Чи можна змінити швидкість руху дослідниці?
+Цифра `5` в `переміститина (5) кроків`{.b}-klossene визначає швидкість пересування дослідниці. Ми хотіли б трохи  поекспериментувати, щоб побачити, яка швидкість найкраще працює в нашій грі, але щоб змінити швидкість, ми повинні змінити число в чотирьох різних скриптах. Це було б занадто багато роботи!
 
-## Sjekkliste {.check}
 
-Vi vil i stedet bruke en __variabel__ som kan styre farten til
-`Utforsker`-figuren.
+## Контрольний список {.check}
 
-- [ ] Lag en ny variabel ved å gå til `Variabler`{.blockdata}-kategorien og
-  klikk `Lag en Variabel`.
+Замість цього ми використаємо __змінну__, яка може керувати швидкістю руху символу `Дослідниці`.
 
-- [ ] Kall variabelen `hastighet`, og velg at den bare skal gjelde `For
-  denne figuren`.
+- [ ] Створіть нову змінну, перейшовши на вкладку `Змінні`{.blockdata} і натиснувши кнопку `Створити змінну`.
 
-- [ ] Til slutt, fjern avhukingen ved siden av den nye
-  `(hastighet)`{.b}-klossen for at variabelen ikke skal vises på
-  scenen.
+- [ ] Викличте змінну `швидкість` і виберіть, щоб вона застосовувалася `Тільки для цього спрайту`.
 
-Nå må vi endre i skriptene våre slik at bruker
-`(hastighet)`{.b}-variabelen.
+- [ ]  Нарешті, зніміть галочку поруч з `(швидкість)`{.b}-variabelen щоб змінна не з'являлася на сцені.
 
-- [ ] Lag først et nytt skript som setter verdien av `(hastighet)`{.b} til
-  `10`.
+- [ ] Спочатку створіть новий скрипт, який встановлює значення `(швидкість)`{.b} рівним `10`.
 
   ```blocks
-  når @greenFlag klikkes
-  sett [hastighet v] til [10]
+  коли @greenFlag натиснуто
+  надати [швидкість v] значення [10]
   ```
 
-- [ ] Deretter endrer vi de fire skriptene vi allerede har laget slik at
-  de bruker `(hastighet)`{.b}.
+- [ ] Далі ми змінимо чотири сценарії, які ми вже створили, щоб використовувати `(швидкість)`{.b}.
 
   ```blocks
-  når [pil opp v] trykkes
-  pek i retning (0 v)
-  gå (hastighet) steg
+  коли клавішу [стрілка вгору v] натиснуто
+  повернути в напрямку (0 v)
+  перемістити на (швидкість) кроків
 
-  når [pil ned v] trykkes
-  pek i retning (180 v)
-  gå (hastighet) steg
+  коли клавішу [стрілка вниз v] натиснуто
+  повернути в напрямку (180 v)
+  перемістити на (hastighet) кроків
 
-  når [pil høyre v] trykkes
-  pek i retning (90 v)
-  gå (hastighet) steg
+  коли клавішу [стрілка праворуч v] натиснуто
+  повернути в напрямку (90 v)
+  перемістити на (hastighet) кроків
 
-  når [pil venstre v] trykkes
-  pek i retning (-90 v)
-  gå (hastighet) steg
+  коли клавішу [стрілка ліворуч v] натиснуто
+  повернути в напрямку (-90 v)
+  перемістити на (hastighet) кроків
   ```
 
-## Test prosjektet {.flag}
+## Перевірте проєкт {.flag}
 
-__Klikk på det grønne flagget.__
+__Натисніть на зелений прапорець.__
 
-- [ ] Beveger utforskeren din seg fortsatt rundt slik den gjorde
-  tidligere?
+- [ ] Чи пересувається ваш експлорер так само, як і раніше?
 
-- [ ] Forandrer hastigheten til utforskeren seg hvis du endrer verdien av
-  `(hastighet)`{.b} og klikker på det grønne flagget igjen?
+- [ ] Чи змінюється швидкість дослідниці, якщо змінити значення параметра `(швидкість)`{.b} і знову клацнути зелений прапорець?
 
-- [ ] Velg en hastighet du synes passer.
+- [ ] Виберіть швидкість, яка вам підходить.
 
+# Крок 2: Малюємо власний лабіринт {.activity}
 
-# Steg 2: Vi tegner vår egen labyrint {.activity}
+*Тепер, коли ми можемо переміщати нашу дослідницю по екрану, давайте кинемо їй виклик! Ми намалюємо лабіринт, яким вона має рухатися.*
 
-*Nå som vi kan bevege utforskeren vår rundt omkring på skjermen, skal
- vi gi henne en utfordring! Vi vil tegne en labyrint som hun kan
- bevege seg rundt inni.*
+## Контрольний список {.check}
 
-## Sjekkliste {.check}
+- [ ] Торкніться Обрати тло `Виберіть фігуру з бібліотеки` ![Velg figur fra biblioteket](../bilder/velg-bakgrunn.png) в правому нижньому куті екрана, а потім торкніться пензля, який з'явиться, щоб намалювати нове __тло__. Переконайтеся, що ви малюєте саме нове тло, а не нового персонажа.
 
-- [ ] Trykk `Velg et bakgrunnsbilde`
-  ![Velg figur fra biblioteket](../bilder/velg-bakgrunn.png) nederst
-  til høyre på skjermen, og trykk så på penselen som dukker opp, for
-  å tegne en ny bakgrunn. Pass på at du faktisk tegner en ny
-  __bakgrunn__, og ikke en ny figur.
+- [ ] Назвіть новий фон Лабіринт.
 
-- [ ] Gi den nye bakgrunnen navnet `Labyrint`.
+- [ ] Виберіть колір, який вам подобається, і намалюйте невеликий лабіринт. Важливо, щоб усі стіни лабіринту були одного кольору (скоро ми дізнаємося чому). Ви можете вибрати, як виглядатиме лабіринт, він навіть не обов'язково повинен мати прямі стіни!
 
-- [ ] Velg en farge du liker og tegn en liten labyrint. Det er viktig at
-  alle veggene i labyrinten har samme farge (vi oppdager hvorfor
-  snart). Du kan velge selv hvordan labyrinten skal se ut, den trenger
-  ikke en gang å ha rette vegger!
+![Bilde av en enkel liten labyring](liten-labyrint.png)
 
-  ![Bilde av en enkel liten labyring](liten-labyrint.png)
+  Це приклад невеликого і простого лабіринту. Ви можете вибрати, як ви хочете, щоб ваш лабіринт виглядав! Але не витрачайте занадто багато часу на малювання лабіринту зараз, тому що ми продовжимо його програмувати. Натомість ви можете повернутися і намалювати більш складний лабіринт після того, як закінчите гру!
 
-  Dette er et eksempel på en liten og enkel labyrint. Du kan selv
-  velge hvordan din labyrint skal se ut! Men ikke bruk for lang tid
-  på å tegne labyrinten nå, for vi vil jo fortsette å
-  programmere. Du kan i stedet komme tilbake og tegne en mer
-  avansert labyrint etter at du er ferdig med spillet!
+## Поради та підказки {.protip}
 
-## Tips {.protip}
+Якщо ви хочете намалювати прямі стіни, найпростіше скористатися інструментом, ![Linjeverktøy](../bilder/tegn-linje.png). Ви також можете утримувати клавішу Shift, щоб зробити лінії ідеально прямими.
 
-Dersom du vil tegne rette vegger er det enklest å bruke
-linjeverktøyet, ![Linjeverktøy](../bilder/tegn-linje.png). Du kan i
-tillegg holde inne `shift`-knappen for at linjene skal bli helt rette.
+## Перевірте проєкт {.flag}
 
-## Test prosjektet {.flag}
+__Натисніть на зелений прапорець.__
 
-__Klikk på det grønne flagget.__
+- [ ] Чи можете ви переміщати фігурку дослідниці всередині лабіринту?
 
-- [ ] Kan du bevege utforskerfiguren din rundt inne i labyrinten?
+- [ ] Що станеться, якщо ваш персонаж вдариться об стіну в лабіринті?
 
-- [ ] Dersom figuren din er for stor kan du gjøre den mindre ved å
-  trykke på figuren, og så gjøre tallet i `Størrelse`-boksen mindre.
+- [ ] Якщо фігура занадто велика, ви можете зменшити її розмір, натиснувши на фігуру, а потім зменшивши число у полі `Розмір`.
 
-- [ ] Hva skjer dersom figuren din går på veggen i labyrinten?
+# Крок 3: Дослідниця не може пройти крізь стіну {.activity}
 
-# Steg 3: Utforskeren kan ikke gå gjennom veggen {.activity}
+*Навіть якщо ми спроектували гарний лабіринт, дослідниці на нього начхати. Він може просто пройти крізь стіни. Зараз ми з цим щось зробимо.*
 
-*Selv om vi har tegnet en flott labyrint bryr ikke utforskeren seg noe
- om den. Hun kan bare gå gjennom veggene. Det skal vi gjøre noe med
- nå*
+## Контрольний список {.check}
 
-## Sjekkliste {.check}
+Щоб визначити, коли наш персонаж `Дослідниця` проходить крізь стіну лабіринту, ми будемо використовувати `<торкається кольору [#ffffff]>`{.b}-kloss.
+Цей блок визначає, чи торкається персонаж певного кольору. Тут важливо, що ми намалювали всі стіни лабіринту одним кольором.
 
-For å oppdage når `Utforsker`-figuren vår går gjennom veggen på
-labyrinten vil vi bruke en `<berører fargen [#ffffff]>`{.b}-kloss.
-Denne klossen merker om en figur kommer borti en spesiell farge.  Her
-er det viktig at vi har tegnet alle veggene i labyrinten i samme
-farge.
-
-- [ ] Vi legger `<berører fargen [#ffffff]>`{.b}-klossen inn i skriptet vi
-  allerede har laget som setter `(hastighet)`{.b}-variabelen.
+- [ ] Ми додаємо `<торкається кольору [#ffffff]>`{.b}-klossen iу вже створений скрипт, який задає `(швидкість)`{.b}-variabelen.
 
   ```blocks
-  når @greenFlag klikkes
-  sett [hastighet v] til [10]
-  gjenta for alltid
-      hvis <berører fargen [#cc0000]?>
-          snu @turnRight (180) grader
-          gå (hastighet) steg
-          snu @turnRight (180) grader
+  коли @greenFlag натиснуто
+  надати [швидкість v] значення [10]
+  завжди
+      якщо <торкається кольору [#cc0000]?>
+          поворот @turnRight на (180) градусів
+          перемістити на (швидкість) кроків
+          поворот @turnRight на (180) градусів
       slutt
   slutt
   ```
 
-- [ ] For å få riktig farge i `berører fargen [#cc0000]`{.b}-klossen
-  klikker du først på den lille firkanten hvor fargen vises. Det
-  dukker opp en boks med fargevalg. Under fargevalgene er det et
-  ikon. Klikk ikonet, deretter flytter du musepekeren slik at den
-  peker på en vegg i labyrinten din. Da forandres fargen i den lille
-  firkanten. Klikk igjen for å velge denne fargen.
+- [ ] Щоб отримати правильний колір в `торкається кольору [#cc0000]`{.b}-klossen
+  спочатку клацніть на маленький квадратик, де відображається колір. З'явиться вікно з варіантами кольорів. Під варіантами кольорів є піктограма. Клацніть на іконку, а потім перемістіть вказівник миші так, щоб він вказував на стіну в лабіринті. Це змінить колір у маленькому квадратику. Клацніть ще раз, щоб вибрати цей колір.
 
-## Test prosjektet {.flag}
+## Перевірте проєкт {.flag}
 
-__Klikk på det grønne flagget.__
+__Натисніть на зелений прапорець.__
 
-- [ ] Blir utforskeren stoppet når hun prøver å gå gjennom veggen?
+- [ ] Чи зупинять дослідника, коли він спробує пройти крізь стіну?
 
-- [ ] Skjønner du hvordan skriptet sier at utforskeren ikke kan gå gjennom
-  veggen?
+- [ ] Ви розумієте, чому в сценарії сказано, що дослідниця не може пройти крізь стіну?
 
-## Tips {.protip}
+## Поради та підказки {.protip}
 
-En måte vi kan bruke for å begrense hvor en figur kan gå, er å tvinge
-den til å ta et skritt tilbake når den gjør noe feil. I koden
+Один із способів обмежити рух персонажа - змусити його зробити крок назад, коли він робить щось не так. У коді
 
 ```blocks
-  snu @turnRight (180) grader
-  gå (hastighet) steg
-  snu @turnRight (180) grader
+  поворот @turnRight на (180) градусів
+  перемістити на (швидкість) кроків
+  поворот @turnRight на (180) градусів
 ```
 
-vil figuren først snu seg helt rundt (180 grader), deretter ta et
-skritt, og til slutt snu seg rundt igjen slik at den peker i samme
-retning som da den startet.
+фігура спочатку повністю обернеться (на 180 градусів), потім зробить крок і, нарешті, знову обернеться так, що буде вказувати в тому ж напрямку, що і на початку руху.
 
+# Крок 4: У пошуках скарбу {.activity}
 
-# Steg 4: På leting etter skatten {.activity}
+*Тепер ми можемо пересуватися лабіринтом. Але це швидко набридає, якщо в лабіринті немає чим зайнятися. Спробуймо знайти скарб!*
 
-*Nå kan vi bevege oss rundt i labyrinten. Men det blir jo fort
- kjedelig om vi ikke har noe å gjøre inne i labyrinten. La oss se om
- vi kanskje finner en skatt!*
+## Контрольний список {.check}
 
-## Sjekkliste {.check}
+- [ ] Додавання нової фігури. Ви можете вибрати фігуру з бібліотеки, навівши вказівник миші на пункт  ![Velg figur fra biblioteket](../bilder/hent-fra-bibliotek.png) і натиснувши на пензель, що з'явиться, щоб намалювати власну фігуру, або натиснувши на лупу, щоб вибрати вже готову фігуру. 
 
-- [ ] Legg til en ny figur. Du kan velge en figur fra biblioteket ved
-  å flytte musepekeren over
-  ![Velg figur fra biblioteket](../bilder/hent-fra-bibliotek.png) og
-  enten trykke på penselen som dukker opp for å tegne en egen, eller
-  trykk på forstørrelsesglasset for å velge en figur som er
-  ferdiglagd.
+Ми використали символ Vi brukte figuren `Усі/Star`.
 
- . Vi brukte figuren
-  `Ting/Star1`.
+- [ ] Дайте новій фігурці ім'я `Скарб`.
+      
+- [ ] Перетягніть скарб у своєму лабіринті та сховайте його у важкодоступному місці.
 
-- [ ] Gi den nye figuren navnet `Skatt`.
+Тепер ми створимо код, який визначить, коли дослідник знайде скарб. Тут у нас є вибір:  Ми можемо створити скрипт для `Дослідниці` який перевіряє, чи торкається вона `Скарбу`, або ми можемо зробити навпаки, ми можемо створити скрипт для  `Скарбу` який перевіряє, чи торкається він `Дослідниці`.
 
-- [ ] Dra skatten rundt inne i labyrinten din, og gjem den et sted den er
-  vanskelig å komme til.
-
-Vi skal nå lage litt kode som oppdager når utforskeren finner
-skatten. Her har vi faktisk et valg: Vi kan lage et skript på
-`Utforsker` som sjekker om hun berører `Skatt`, eller vi kan gjøre det
-omvendt, vi kan lage et skript på `Skatt` som sjekker om den berører
-`Utforsker`.
-
-I dette tilfellet spiller det liten rolle hva vi velger, men om vi
-tenker oss at vi kanskje vil lage flere skatter senere kan det være
-litt enklere å lage skriptet på `Skatt`.
+Переконайтеся, що вибрана фігура `Скарб`  і введіть наступний код: .
 
 - [ ] Pass på at figuren `Skatt` er markert, og skriv følgende kode:
 
   ```blocks
-  når @greenFlag klikkes
-  gjenta for alltid
-      hvis <berører [Utforsker v]?>
-          skjul
+  коли @greenFlag натиснуто
+  завжди
+      якщо <торкається [Дослідниця v]?>
+          сховати
       slutt
   slutt
   ```
