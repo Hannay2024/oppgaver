@@ -7,66 +7,53 @@ language: ua
 ---
 
 
-# Introduksjon {.intro}
+# Вступ {.intro}
 
-I dette spillet vil vi kontrollere en liten utforsker mens hun leter
-etter skatten gjemt inne i labyrinten. Dessverre er skatten beskyttet
-av den skumle froskekongen. Vi vil lære hvordan vi kontrollerer
-figurer, og hvordan vi kan programmere figurer til å bevege seg selv.
+У цій грі ми будемо керувати маленькою дослідницею, яка шукає скарб, захований у лабіринті. На жаль, скарб охороняє страшний жаб'ячий король. Ми навчимося керувати персонажами та програмувати їхні рухи.
 
 ![Bilde av labyrinten, froskekongen, utforskeren og skatten](labyrint.png)
 
 
-# Steg 1: Hvordan styre figurer med piltastene {.activity}
+# Крок 1:  Як керувати фігурами за допомогою клавіш зі стрілками {.activity}
 
-*Vi begynner med å se på hvordan vi kan styre figurer med
- piltastene. For å få til dette vil vi bruke
- `Hendelser`{.blockevents}-klosser som merker når man trykker på
- tastaturet.*
+*Ми почнемо з того, як керувати фігурами за допомогою клавіш зі стрілками. Для цього ми будемо використовувати блоки `Події`{.blockevents}, які відмічатимуть натискання клавіш на клавіатурі.*
 
-## Sjekkliste {.check}
+## Контрольний список {.check}
 
-- [ ] Start et nytt prosjekt.
+- [ ] Розпочати новий проект.
 
-- [ ] Slett kattefiguren ved å høyreklikke på den og velge `slett`.
+- [ ] Видаліть символ кота, клацнувши на ньому правою кнопкою миші та вибравши `вилучити`.
 
-- [ ] Legg til en ny figur. Klikk på ![Velg figur fra biblioteket](../bilder/hent-fra-bibliotek.png)-knappen
-  og velg en figur du har lyst til å styre rundt. Vi har brukt
-  `Dyr/Beetle`-figuren.
+- [ ] Додайте нового персонажа. Натисніть кнопку ![Velg figur fra biblioteket](../bilder/hent-fra-bibliotek.png) і виберіть персонажа, якого хочете переміщати. Ми використали персонажа 'Тварини/Beetle'.
 
-- [ ] Gi den nye figuren navnet `Utforsker`: trykk på navnfeltet over
-  figuren og skriv inn det nye navnet.
+- [ ] Назвіть новий символ 'Дослідниця': торкніться поля імені над символом і введіть нове ім'я.
 
-  Vi begynner med å la figuren bevege seg oppover skjermen når vi
-  trykker på `pil opp`-tasten.
+  Почнемо з того, що дозволимо фігурі рухатися вгору по екрану, коли натискаємо клавішу 'стрілка вгору'. 
 
-- [ ] Legg til følgende skript på `Utforsker`-figuren din.
+- [ ] Додайте наступний сценарій до вашої фігури 'Дослідниці'. 
 
   ```blocks
-  når [pil opp v] trykkes
-  pek i retning (0 v)
-  gå (5) steg
+  коли клавішу [стрілка вгору v] натиснуто
+  повернути в напрямку (0 v)
+  перемістити на (5) кроків
   ```
 
-  Prøv å trykk på `pil opp`-tasten. Beveger utforskeren din seg
-  oppover skjermen? Nå må vi lage lignende skript for de andre
-  tastene.
+Спробуйте натиснути клавішу 'стрілка вгору'. Ваш провідник рухається вгору по екрану? Тепер нам потрібно створити подібні скрипти для інших клавіш.
 
-- [ ] Legg også til disse skriptene, slik at `Utforsker` har totalt fire
-  skript, ett for hver tast.
+- [ ] Додайте ці сценарії, щоб 'Дослідник' мав загалом чотири сценарії, по одному для кожної клавіші. 
 
   ```blocks
-  når [pil ned v] trykkes
-  pek i retning (180 v)
-  gå (5) steg
+  rjkb rkfdsie [стілка вниз v] натиснуто
+  повернути у напрямку (180 v)
+  перемістити на (5) кроків
 
-  når [pil høyre v] trykkes
-  pek i retning (90 v)
-  gå (5) steg
+  коли клавішу [стрілка праворуч v] натиснуто
+  повернути у напрямку (90 v)
+  перемітити на (5) кроків
 
-  når [pil venstre v] trykkes
-  pek i retning (-90 v)
-  gå (5) steg
+  коли клавішу [стрілка ліворуч v] натиснуто
+  повернути у напрямку (-90 v)
+  перемістити на (5) кроків
   ```
 
 ## Test prosjektet {.flag}
