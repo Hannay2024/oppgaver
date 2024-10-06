@@ -222,214 +222,181 @@ __Натисніть на зелений прапорець.__
   slutt
   ```
 
-## Test prosjektet {.flag}
+## Перевірте проєкт {.flag}
 
-__Klikk på det grønne flagget.__
+__Натисніть на зелений прапорець.__
 
-- [ ] Forsvinner skatten når utforskeren finner fram til den?
+- [ ] Чи зникає скарб, коли дослідниця його знаходить?
 
-- [ ] Hva skjer når du prøver å starte spillet på nytt etter å ha funnet
-  skatten? Hvor har skatten blitt av?
+- [ ] Що станеться, коли ви спробуєте перезапустити гру після того, як знайдете скарб? Куди зник скарб?
 
-## Sjekkliste {.check}
+## Контрольний список {.check}
 
-Det er et problem i spillet vårt. Etter at utforskeren har funnet
-skatten en gang, forblir skatten borte.
+У нашій грі виникла проблема. Після того, як дослідниця один раз знайшла скарб, він більше не з'являється.
 
-- [ ] Vi må passe på at skatten vises på begynnelsen av spillet. Endre
-  skriptet på `Skatt` ved å legge til `vis`{.b} helt i begynnelsen.
+- [ ] Нам потрібно зробити так, щоб скарб з'являвся на початку гри. Змініть скрипт `Скарб`, додавши 
+`показати`{.b} на самому початку..
 
   ```blocks
-  når @greenFlag klikkes
-  vis
-  gjenta for alltid
-      hvis <berører [Utforsker v]?>
-          skjul
+  коли @greenFlag натиснуто
+  показати
+ завжди
+      якщо <торкається [Дослідниця v]?> то
+          сховати
       slutt
   slutt
   ```
 
-Vi har enda et problem: Når vi starter spillet på nytt står
-utforskeren fortsatt der den fant skatten sist. Det blir ikke veldig
-spennende.
+У нас ще одна проблема: Коли ми перезапускаємо гру, дослідниця все ще стоїть на тому місці, де вона знайшла скарб минулого разу. Це не дуже захоплююче.
 
-- [ ] Klikk på `Utforsker`-figuren.
 
-- [ ] Legg til en `gå til x: () y: ()`{.b}-kloss rett etter `sett
-  [hastighet v] til (10)`{.b}-klossen.
 
-- [ ] For å finne ut hvilke tall vi vil bruke for `x` og `y` kan vi
-  gjøre følgende. Dra utforskeren til et sted det er fint å starte
-  fra. Se på tallene over figur-lista. Sammen med `Utforsker`-figuren
-  står det `x` og `y` og to tall. Dette er posisjonen til figuren
-  akkurat nå. Skriv disse to tallene inn i `gå til x: () y:
-  ()`{.b}-klossen.
+- [ ] Клацніть на символ `Дослідниці`
 
-- [ ] Hele skriptet vil nå se slik ut (dine tall for `x` og `y` vil være
-  forskjellige):
+- [ ] Додайте `перемістити в x: () y: ()`{.b}-kloss відразу після `надати
+  [швидкість v] значення (10)`{.b}-klossen.
+
+- [ ] Щоб дізнатися, які числа ми хочемо використати для `x` та `y` ми можемо зробити наступне. Перетягніть провідник у потрібне місце, з якого можна почати. Подивіться на числа над списком фігур. Поряд з фігурою `Дослідниці` знаходяться `x` і `y` та два числа. Це положення фігури в даний момент. Введіть ці два числа до поля `перемістити в x: () y: ()`{.b}-klossen.
+
+- [ ] Тепер весь скрипт буде виглядати так (ваші числа для `x` та `y` будуть відрізнятися):
 
   ```blocks
-  når @greenFlag klikkes
-  sett [hastighet v] til [10]
-  gå til x: (-200) y: (0)
-  gjenta for alltid
-      hvis <berører fargen [#cc0000]?>
-          snu @turnRight (180) grader
-          gå (hastighet) steg
-          snu @turnRight (180) grader
+  коли @greenFlag натиснуто
+  надати [швидкість v] значення [10]
+  перемістити в x: (-200) y: (0)
+  завжди
+      якщо <торкається кольору [#cc0000]?>
+          поворот @turnRight (180) градусів
+          перемістити на (hastighet) кроків
+          поворот @turnRight (180) градусів
       slutt
   slutt
   ```
 
-## Test prosjektet {.flag}
+## Перевірте проєкт {.flag}
 
-__Klikk på det grønne flagget.__
+__Натисніть на зелений прапорець.__
 
-- [ ] Forsvinner fortsatt skatten når utforskeren finner fram til den?
+- [ ] Чи зникає скарб, коли дослідник його знаходить?
 
-- [ ] Virker spillet slik det skal når du starter det på nytt etter å ha
-  funnet skatten?
+- [ ] Чи працює гра належним чином, коли ви перезапускаєте її після того, як знайшли скарб?
 
+# Крок 5: Жаб'ячий король охороняє коридори {.activity}
 
-# Steg 5: Froskekongen vokter i gangene {.activity}
+*Тепер ми ускладнимо гру. Жаб'ячий король блукає лабіринтом і шукає скарб.*
 
-*Nå skal vi gjøre spillet vanskeligere. Froskekongen vandrer rundt i
- labyrinten og passer på skatten.*
+## Контрольний список {.check}
 
-## Sjekkliste {.check}
+- [ ] Додайте нового персонажа. Ми використали `Тварини/Frog`. Назвемо його `Жаб'ячий король`.
 
-- [ ] Legg til en ny figur. Vi brukte `Dyr/Frog`. Gi den navnet
-  `Froskekonge`.
+- [ ] Помістіть нову фігуру десь у лабіринті. Зробіть її меншою або більшою, якщо потрібно.
 
-- [ ] Plasser den nye figuren et sted i labyrinten. Gjør den mindre eller
-  større om nødvendig.
+Ми почнемо з того, що дамо `Жаб'ячому королю` зрозуміти, що він спіймав дослідницю. Це буде дуже схоже на те, як `Скарб` помітив, що його знайшли.
 
-Vi begynner med å la `Froskekonge` merke at den fanger utforskeren.
-Dette blir veldig likt hvordan `Skatt` merket at den ble funnet.
-
-- [ ] Legg til følgende kode:
+- [ ] Додайте наступний код:
 
   ```blocks
-  når @greenFlag klikkes
-  gjenta for alltid
-      hvis <berører [Utforsker v]?>
-          si [Tok deg!] i (1) sekunder
-          stopp [alle v] :: control
+  коли @greenFlag натиснуто
+  завжди
+      якщо <торкається [Дослідниця v]?>
+          говорити [Попався!] i (1) сек
+          зупинити [все v]
+        slutt
+  slutt
+  ```
+- [ ] Блок
+   `зупинити [все v] :: control`{.b} 
+        
+зупиняє виконання скрипту `Скарб`. Це означає, що ми не зможемо повернути скарб після того, як його захопить `Жаб'ячий король`.
+ 
+## Перевірте проєкт {.flag}
+
+__Натисніть на зелений прапорець.__
+
+- [ ] Що станеться, якщо дослідниця зіткнеться з жаб'ячим королем?
+
+- [ ] Що станеться, якщо ви знайдете скарб після того, як вас спіймав жаб'ячий король?
+
+## Контрольний список {.check}
+
+Нарешті, ми змусимо жаб'ячого короля рухатися лабіринтом.
+
+- [ ] Запустіть новий сценарій для персонажа `Жаб'ячого короля`. Знову ж таки, ви можете замінити числа для `x` та `y` чимось, що підходить для вашого лабіринту.
+      
+  ```blocks
+  коли @greenFlag натиснуто
+  перемістити в x: (50) y: (100)
+  повернути в напрямку (-90 v)
+  ```
+
+- [ ] Перш ніж дозволити `Жаб'ячому королю` почати рух, ми створюємо  змінну `(швидкість)`{.b}-variabel для нього. Клацніть на `Змінні`{.blockdata}, а потім `Створити змінну`. Назвіть змінну `швидкість` і дозвольте їй застосовуватися `Тільки для цього спрайту`. Нарешті, видаліть відхилення на змінній.
+
+- [ ] Тепер ми можемо розширити сценарій так, щоб жаб'ячий король ходив туди-сюди. Ми змушуємо його розвертатися, коли він вдаряється об стіну, так само, як ми не даємо дослідниці пройти крізь стіну.
+
+  ```blocks
+  коли @greenFlag натиснуто
+  перемістити в x: (50) y: (100)
+  повернути в напрямку (-90 v)
+  надати [швидкість v] значення [5]
+  завжди
+      перемістити на (швидкість) кроків
+      якщо <торкається кольору [#cc0000]?>
+          поворот @turnRight (180) градусів
+          перемістити на (швидкість) кроків
       slutt
   slutt
   ```
 
-Linjen `stopp [alle v] :: control`{.b} gjør at skriptet på `Skatt`
-slutter å kjøre. Det betyr at vi klarer ikke å få tak i skatten etter
-at vi har blitt tatt av `Froskekonge`.
+Нарешті, ми можемо ще більше ускладнити завдання, дозволивши `Жаб'ячому королю` час від часу змінювати напрямок руху.
 
-## Test prosjektet {.flag}
-
-__Klikk på det grønne flagget.__
-
-- [ ] Hva skjer om utforskeren kommer borti froskekongen?
-
-- [ ] Hva skjer når du finner skatten etter å ha blitt tatt av
-  froskekongen?
-
-## Sjekkliste {.check}
-
-Til sist skal vi få froskekongen til å bevege seg rundt i labyrinten.
-
-- [ ] Start et nytt skript på `Froskekonge`-figuren. Igjen kan du bytte ut
-  tallene for `x` og `y` med noe som passer for din labyrint.
+- [ ] Додайте код, який дозволяє `Жаб'ячому королю` випадково обертатися в лабіринті:
 
   ```blocks
-  når @greenFlag klikkes
-  gå til x: (50) y: (100)
-  pek i retning (-90 v)
-  ```
-
-- [ ] Før vi lar `Froskekonge` begynne å bevege seg lager vi en
-  `(hastighet)`{.b}-variabel også for ham. Klikk på
-  `Variabler`{.blockdata}, og deretter `Lag en Variabel`. Kall variabelen
-  `hastighet` og la den gjelde kun `For denne figuren`. Tilslutt,
-  fjern avhukingen på variabelen.
-
-- [ ] Vi kan nå utvide skriptet slik at froskekongen går fram og
-  tilbake. Vi får ham til å snu når han treffer veggen på nesten samme
-  måte som vi hindrer utforskeren i å gå gjennom veggen.
-
-  ```blocks
-  når @greenFlag klikkes
-  gå til x: (50) y: (100)
-  pek i retning (-90 v)
-  sett [hastighet v] til [5]
-  gjenta for alltid
-      gå (hastighet) steg
-      hvis <berører fargen [#cc0000]?>
-          snu @turnRight (180) grader
-          gå (hastighet) steg
+  коли @greenFlag натиснуто
+  перемістити в x: (50) y: (100)
+  повернути в напрямку (-90 v)
+  надати [швидкість v] значення [5]
+  завжди
+      перемістити на (швидкість) кроків
+      якщо <торкається кольору [#cc0000]?>
+          поворот @turnRight (180) градусів
+          перемістити на (швидкість) кроків
+      slutt
+      якщо <(випадкове значення від (1) до (25)) = [1]> то
+          поворот @turnRight на ((ипадкове значення від (-1) до (1)) * (90)) градусів
       slutt
   slutt
   ```
 
-Helt tilslutt kan vi gjøre det enda vanskeligere ved å la froskekongen
-av og til endre retning.
+Останні дві цеглинки виглядають трохи складніше. Давайте подивимося на них ближче.
 
-- [ ] Legg til kode som lar `Froskekonge` snu seg tilfeldig rundt i labyrinten:
+Це 
 
-  ```blocks
-  når @greenFlag klikkes
-  gå til x: (50) y: (100)
-  pek i retning (-90 v)
-  sett [hastighet v] til [5]
-  gjenta for alltid
-      gå (hastighet) steg
-      hvis <berører fargen [#cc0000]?>
-          snu @turnRight (180) grader
-          gå (hastighet) steg
-      slutt
-      hvis <(tilfeldig tall fra (1) til (25)) = [1]>
-          snu @turnRight ((tilfeldig tall fra (-1) til (1)) * (90)) grader
-      slutt
-  slutt
-  ```
+- [ ] `якщо <(випадкове значення від (1) до (25)) = [1]>`{.b} то каже нам *щось робити* приблизно один раз на 25.
 
-Disse to siste klossene ser litt kompliserte ut. La oss se litt nøyere på dem.
+- [ ] Це *щось робити* є `поворот @turnRight ((випадкове значення від (-1) до (1)) *
+  (90)) градусів `{.b}. Знак `*` означає ходьбу, тож якщо ми виберемо навмання числа -1, 0 і 1, це означатиме, що жаб'ячий король повернеться на -90, 0 або 90 градусів. Іншими словами, він поверне ліворуч, продовжить йти прямо або поверне праворуч.
 
-- [ ] Klossen `hvis <(tilfeldig tall fra (1) til (25)) = [1]>`{.b} sier at
-  vi skal gjøre *noe* cirka èn av 25 ganger.
+## Поради щодо використання {.protip}
 
-- [ ] Dette *noe* er `snu @turnRight ((tilfeldig tall fra (-1) til (1)) *
-  (90)) grader`{.b}. Tegnet `*` betyr gange, slik at om vi velger
-  tilfeldig mellom tallene -1, 0 og 1, betyr det at froskekongen vil
-  vende -90, 0 eller 90 grader. Det vil si at den svinger mot venstre,
-  fortsetter rett frem eller svinger mot høyre.
+Іноді ви можете помітити, що `Жаб'ячий король` застряг у стіні. Це відбувається тому, що `Жаб'ячий король` все ще торкається стіни лабіринту після того, як він розвернувся. Ви можете спробувати виправити цю ситуацію кількома способами: зменшити фігурку `Жаб'ячого короля`, додавши 
+`стиль обертання [не обертати v]`{.b}-kloss 
+у верхній частині сценарію `Жаб'ячого короля` або виберіть _округлішу форму_ (також спробуйте стерти язик `Жаб'ячого короля`, якщо ви використовуєте форму `Тварини/Frog`)
 
-## Tips {.protip}
+## Перевірте проєкт {.flag}
 
-Du kan av og til oppleve at `Froskekonge` setter seg fast i
-veggen. Dette er fordi `Froskekonge` fortsatt berører labyrintveggen
-etter at den har snudd seg. Et par ting du kan prøve for å forbedre
-dette er å gjøre `Froskekonge`-figuren mindre, legge en `begrens
-rotasjon [ikke roter v]`{.b}-kloss øverst i `Froskekonge`-skriptet,
-eller velge en figur som er _rundere_ (prøv også å viske bort tunga
-til `Froskekonge` om du bruker `Dyr/Frog`-figuren).
+__Натисніть на зелений прапорець.__
 
-## Test prosjektet {.flag}
+- [ ] Чи зможете ви дістати скарб?
 
-__Klikk på det grønne flagget.__
+- [ ] Якщо гра здається вам занадто легкою або складною, є безліч способів це змінити! Спробуйте зробити жаб'ячого короля більшим або меншим. Спробуйте змінити швидкість дослідниці та жаб'ячого короля. Якщо ви зміните число 25 в останньому скрипті, який ми створили для `Жаб'ячого короля`, він буде змінювати напрямок руху частіше або повільніше.
 
-- [ ] Klarer du å få tak i skatten?
+- [ ] Ви також можете спробувати створити більше `Скарбів`. Спробуйте клацнути правою кнопкою миші на символі `Скарб` і вибрати пункт `дублювати`.
 
-- [ ] Om du synes spillet er for lett eller vanskelig er det mange måter
-  du kan endre dette på! Prøv å lag froskekongen større eller
-  mindre. Prøv å endre hastigheten på både utforskeren og
-  froskekongen. Om du endrer tallet 25 i det siste skriptet vi laget
-  for `Froskekonge` vil han endre retning oftere eller sjednere.
+## Збережіть свій проект {.save}
 
-- [ ] Du kan også prøve å lage flere skatter. Prøv å høyreklikk på
-  `Skatt`-figuren og velg `Lag en kopi`.
+*На цьому ми закінчили з грою в лабіринт!*
 
-## Lagre prosjektet {.save}
+Тепер ви можете вирушати на пошуки скарбів! Якщо хочете, можете поділитися грою з родиною та друзями, натиснувши кнопку `Поділитися`.
 
-*Da var vi ferdig med labyrint-spillet!*
-
-Nå kan du gå på skattejakt! Hvis du vil kan du dele spillet med
-familie og venner ved å trykke `Legg ut`.
+Ліцензія: CC BY-SA 4.0
